@@ -1,0 +1,19 @@
+{
+    "name": "backend-server",
+    "version": "1.0.0",
+    "description": "Servidor de entrenamiento del servidor avanzado",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Jesús Lazo",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.16.2",
+        "mongoose": "^5.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^1.14.11"
+    }
+}
