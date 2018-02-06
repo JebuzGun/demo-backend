@@ -1,16 +1,26 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 var app = express();
 
-app.get('/', (req, res, next) => {
-    res.status(200).json({
-        mensaje: 'Esto es un ejemplo',
-        ok: true
-    });
-});
+//body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-mongoose.connection.openUri('mongodb://192.168.1.199:27017/hospitaldb', (err, res) => {
+//importar rutas
+var appRoutes = require('./routes/app');
+var usuarioRoutes = require('./routes/usuario');
+var loginRoutes = require('./routes/login');
+
+//rutas
+app.use('/usuario', usuarioRoutes);
+app.use('/login', loginRoutes);
+app.use('/', appRoutes);
+
+
+
+mongoose.connection.openUri('mongodb://192.168.1.199:27017/hospitalDB', (err, res) => {
     if (err) throw err;
     console.log('BD disponible');
 });
